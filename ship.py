@@ -11,12 +11,20 @@ class Ship:
         self.rect = self.image.get_rect()
         # postion the ship in midd bottom
         self.rect.midbottom = self.screen_rect.midbottom
-        self.right_move=False
-        self.left_move=False
+        self.right_move = False
+        self.left_move = False
+        self.upper_move = False
+        self.down_move = False
+
     def update(self):
         if self.right_move:
-            self.rect.x+=1
+            self.rect.x += 1
         if self.left_move:
-            self.rect.x-=1
+            self.rect.x -= 1
+        if self.upper_move:
+            self.rect.y -= 1
+        if self.down_move:
+            self.rect.y += 1
+
     def blitme(self):
         self.screen.blit(self.image, self.rect)
