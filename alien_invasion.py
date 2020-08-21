@@ -17,14 +17,20 @@ class AlienInvasion:
 
     def run_game(self):
         while True:
+            self.ship.update()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
                 elif event.type == pygame.KEYDOWN:
                     if event.key==pygame.K_RIGHT:
-                        self.ship.rect.x+=1
+                        self.ship.right_move=True
                     if event.key == pygame.K_LEFT:
-                        self.ship.rect.x-=1
+                        self.ship.left_move=True
+                elif event.type == pygame.KEYUP:
+                    if event.key ==pygame.K_RIGHT:
+                        self.ship.right_move=False
+                    if event.key== pygame.K_LEFT:
+                        self.ship.left_move=False
             self.screen.fill(self.settings.bg_color)
             self.ship.blitme()
             pygame.display.flip()
